@@ -22,29 +22,30 @@ class YugiohExtraHardEnv(gym.Env):
     """
     metadata = {'render.modes': ['human']}
 
-    def __init__(self):
-        pass
+    def __init__(self, **kwargs):
+
+        self.game = Engine(**kwargs)
 
     def step(self, action):
         """
         Evolve the state of the duel a single step forward.
         """
 
-        pass
+        self.game.play_card()
 
     def reset(self):
         """
         Reset the duel to an initial state.
         """
 
-        pass
+        self.game.reset()
 
     def render(self, mode='human'):
         """
         Visualize the current state of the duel.
         """
 
-        pass
+        self.game.visualize()
 
     def close(self):
         """
@@ -52,5 +53,5 @@ class YugiohExtraHardEnv(gym.Env):
         necessary.
         """
 
-        pass
+        self.game.finish()
 
